@@ -268,6 +268,8 @@ github.com/viant/toolbox v0.24.0/go.mod h1:OxMCG57V0PXuIP2HNQrtJf2CjqdmbrOx5EkMI
 github.com/xiang90/probing v0.0.0-20190116061207-43a291ad63a2/go.mod h1:UETIi67q53MR2AWcXfiuqkDkRtnGDLqkBTpCHuJHxtU=
 github.com/yomorun/yomo v0.5.2 h1:q00GfWMcrgpueLOYkvdFNyeCdKXfb5KDgBRKnvPOENY=
 github.com/yomorun/yomo v0.5.2/go.mod h1:S+vMrXVFa/DV8Z5kjj0P3A9sdeRv0IoEr6jRoy0wEJg=
+github.com/yomorun/yomo v0.6.0 h1:i3bgt0NNuMIzJpcpI+7nrjY+kp+5Offk7o7yiPkAmv0=
+github.com/yomorun/yomo v0.6.0/go.mod h1:rcMQ8dOikgJsXLxxUSlSN/SyLJQfAe7V16987t2PQqA=
 github.com/yomorun/yomo-codec-golang v0.2.1/go.mod h1:r/611MRnZbd31sd9wNzoDKxYy4Tnt8WHnC4iDTAW3NY=
 github.com/yomorun/yomo-codec-golang v1.2.0 h1:/b9b3jkeyoSeHrE3ElzEi3v/zmkIlP1R6KngAnpLXIc=
 github.com/yomorun/yomo-codec-golang v1.2.0/go.mod h1:jxcwjw+UU1l9W4yMgGkVyFvLyLqcjFZ88AZLBxyr5O4=
