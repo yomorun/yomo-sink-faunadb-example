@@ -27,9 +27,8 @@ You will see the following message:
 2020/12/31 18:47:20 ✅ Listening on 0.0.0.0:4141
 ```
 
-You can run [yomo-zipper](https://yomo.run/zipper) and [yomo-source-demo](https://github.com/yomorun/yomo-source-demo), then it will add the real-time data to `noise` collection in [https://fauna.com/](https://fauna.com/).
-
-See [yomo-zipper](https://yomo.run/zipper#how-to-config-and-run-yomo-zipper) for details.
+You can use the command `yomo wf dev workflow.yaml` to run [yomo-zipper](https://yomo.run/zipper) which will automatically emit the real noise data from CELLA office, or run `yomo wf run workflow.yaml` with the specific `yomo-source`. See [yomo-zipper](https://yomo.run/zipper#how-to-config-and-run-yomo-zipper) for details.
+After running `yomo-zipper`, it will add the real-time data to `noise` collection in [https://fauna.com/](https://fauna.com/).
 
 ## How yomo-sink-faunadb work
 
