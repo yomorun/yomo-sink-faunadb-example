@@ -1,6 +1,6 @@
 # yomo-sink-faunadb
 
-The example shows how to implement a `yomo-sink` to write data to FaunaDB.
+The example shows how to implement a [yomo-sink](https://yomo.run/sink) to write data in FaunaDB.
 
 ## Using Fauna
 
@@ -29,7 +29,7 @@ You will see the following message:
 
 ### Run `yomo-zipper`
 
-You can use the command `yomo wf dev workflow.yaml` to run [yomo-zipper](https://yomo.run/zipper) which will automatically receive the real noise data from CELLA office, or run `yomo wf run workflow.yaml` with the specific `yomo-source`. See [yomo-zipper](https://yomo.run/zipper#how-to-config-and-run-yomo-zipper) for details.
+In order to experience the data processing in YoMo and insert data into FaunaDB, you can use the command `yomo wf dev workflow.yaml` to run [yomo-zipper](https://yomo.run/zipper) which will automatically receive the real noise data from CELLA office, or run `yomo wf run workflow.yaml` with the specific [yomo-source](https://yomo.run/source). See [yomo-zipper](https://yomo.run/zipper#how-to-config-and-run-yomo-zipper) for details.
 
 After running `yomo-zipper`, it will add the real-time data to `noise` collection in [https://fauna.com/](https://fauna.com/).
 
