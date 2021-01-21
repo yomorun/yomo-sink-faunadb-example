@@ -2,14 +2,13 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"os"
 
 	f "github.com/fauna/faunadb-go/v3/faunadb"
+	y3 "github.com/yomorun/y3-codec-golang"
 
 	"github.com/yomorun/yomo/pkg/quic"
-	"github.com/yomorun/yomo/pkg/rx"
 )
 
 var (
@@ -46,20 +45,22 @@ func (s *quicServerHandler) Listen() error {
 }
 
 func (s *quicServerHandler) Read(st quic.Stream) error {
-	rxStream := rx.FromReader(st).
-		Y3Decoder("0x10", float32(0)).
-		StdOut()
+	// decode the data via Y3 Codec.
+	ch := y3.
+		FromStream(st).
+		Subscribe(0x10).
+		OnObserve(onObserve)
 
 	go func() {
-		for customer := range rxStream.Observe() {
-			if customer.Error() {
-				fmt.Println(customer.E.Error())
-			} else if customer.V != nil {
-				err := store(customer.V)
+		for {
+			item, ok := <-ch
+			if ok {
+				// store data to FaunaDB
+				err := store(item)
 				if err != nil {
-					log.Printf("save data `%v` error: %s", customer.V, err.Error())
+					log.Printf("save data `%v` error: %s", item, err.Error())
 				} else {
-					log.Printf("save `%v` to FaunaDB\n", customer.V)
+					log.Printf("save `%v` to FaunaDB\n", item)
 				}
 			}
 		}
@@ -68,16 +69,27 @@ func (s *quicServerHandler) Read(st quic.Stream) error {
 	return nil
 }
 
-type Noise struct {
-	Value float32 `fauna:"value"`
+type noiseData struct {
+	Noise float32 `yomo:"0x11" fauna:"noise"` // Noise value
+	Time  int64   `yomo:"0x12" fauna:"time"`  // Timestamp (ms)
+	From  string  `yomo:"0x13" fauna:"from"`  // Source IP
+}
+
+func onObserve(v []byte) (interface{}, error) {
+	// decode the data via Y3 Codec.
+	data := noiseData{}
+	err := y3.ToObject(v, &data)
+	if err != nil {
+		log.Print(err)
+		return nil, err
+	}
+
+	return data, nil
 }
 
 // store save data to the FaunaDB
-func store(i interface{}) error {
-	value := i.(float32)
-
-	noise := Noise{Value: value}
-	_, err := client.Query(f.Create(f.Collection("noise"), f.Obj{"data": noise}))
+func store(v interface{}) error {
+	_, err := client.Query(f.Create(f.Collection("noise"), f.Obj{"data": v}))
 	if err != nil {
 		return err
 	}
