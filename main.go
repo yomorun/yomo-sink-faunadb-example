@@ -52,16 +52,13 @@ func (s *quicServerHandler) Read(st quic.Stream) error {
 		OnObserve(onObserve)
 
 	go func() {
-		for {
-			item, ok := <-ch
-			if ok {
-				// store data to FaunaDB
-				err := store(item)
-				if err != nil {
-					log.Printf("save data `%v` error: %s", item, err.Error())
-				} else {
-					log.Printf("save `%v` to FaunaDB\n", item)
-				}
+		for item := range ch {
+			// store data to FaunaDB
+			err := store(item)
+			if err != nil {
+				log.Printf("save data `%v` error: %s", item, err.Error())
+			} else {
+				log.Printf("save `%v` to FaunaDB\n", item)
 			}
 		}
 	}()
