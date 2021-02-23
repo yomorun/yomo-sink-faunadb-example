@@ -280,8 +280,8 @@ github.com/viant/assertly v0.4.8/go.mod h1:aGifi++jvCrUaklKEKT0BU95igDNaqkvz+49u
 github.com/viant/toolbox v0.24.0/go.mod h1:OxMCG57V0PXuIP2HNQrtJf2CjqdmbrOx5EkMILuUhzM=
 github.com/xiang90/probing v0.0.0-20190116061207-43a291ad63a2/go.mod h1:UETIi67q53MR2AWcXfiuqkDkRtnGDLqkBTpCHuJHxtU=
 github.com/yomorun/y3-codec-golang v1.6.2/go.mod h1:R+y8hQ/AHZ1tDzWtmspVeX7omqVWFJ42gdlXIOp35rA=
-github.com/yomorun/y3-codec-golang v1.6.3 h1:7JTqWbdeKp9ZeIlIoZTFaMC8/PwQ2HKFVOCbxAEY2B0=
-github.com/yomorun/y3-codec-golang v1.6.3/go.mod h1:R+y8hQ/AHZ1tDzWtmspVeX7omqVWFJ42gdlXIOp35rA=
+github.com/yomorun/y3-codec-golang v1.6.4 h1:2XZBafqNXvHp8PoVrEE3r4WW/nOGJZg/d2Hh0A0WBuk=
+github.com/yomorun/y3-codec-golang v1.6.4/go.mod h1:R+y8hQ/AHZ1tDzWtmspVeX7omqVWFJ42gdlXIOp35rA=
 github.com/yomorun/yomo v0.7.6 h1:M6Cy6tmv354R4fZ3RIJ1F2k2DqvMLLmeGNNPTEd/kbU=
 github.com/yomorun/yomo v0.7.6/go.mod h1:lLVgwJNuIdeRpCxEAKGakzmG0PrNGIuaWXnzSJTlnXs=
 go.etcd.io/bbolt v1.3.2/go.mod h1:IbVyRI1SCnLcuJnV2u8VeU0CEYM7e686BmAb1XKL+uU=
