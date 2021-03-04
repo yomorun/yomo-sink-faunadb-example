@@ -1,0 +1,7 @@
+name: YoMoZipper 
+host: localhost
+port: 9000
+sinks:
+  - name: FaunaDB
+    host: localhost
+    port: 4141

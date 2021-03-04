@@ -1,6 +1,6 @@
 # yomo-sink-faunadb
 
-The example shows how to implement a [yomo-sink](https://yomo.run/sink) to write data in FaunaDB.
+The example shows how to implement a [yomo-sink](https://yomo.run/sink) to bulk write data in FaunaDB.
 
 ## Using Fauna
 
@@ -29,9 +29,46 @@ You will see the following message:
 
 ### Run `yomo-zipper`
 
-In order to experience the data processing in YoMo and insert data into FaunaDB, you can use the command `yomo wf dev workflow.yaml` to run [yomo-zipper](https://yomo.run/zipper) which will automatically receive the real noise data from CELLA office, or run `yomo wf run workflow.yaml` with the specific [yomo-source](https://yomo.run/source). See [yomo-zipper](https://yomo.run/zipper#how-to-config-and-run-yomo-zipper) for details.
+Configure [YoMo-Zipper](https://yomo.run/zipper):
 
-After running `yomo-zipper`, it will add the real-time data to `noise` collection in [https://fauna.com/](https://fauna.com/).
+```yaml
+name: YoMoZipper 
+host: localhost
+port: 9000
+sinks:
+  - name: FaunaDB
+    host: localhost
+    port: 4141
+```
+
+Start this zipper will listen on `9000` port, send data streams directly to `4141`:
+
+```shell
+2020/12/31 19:45:15 Found 0 flows in zipper config
+2020/12/31 19:45:15 Found 1 sinks in zipper config
+2020/12/31 19:45:15 Sink 1: FaunaDB on localhost:4141
+2020/12/31 19:45:15 Running YoMo workflow...
+2020/12/31 19:45:15 ✅ Listening on 0.0.0.0:9000
+2020/12/31 19:45:32 ✅ Connect to FaunaDB (localhost:4141) successfully.
+```
+
+```bash
+cd ./zipper && yomo wf run
+```
+
+### Emulate a data source for testing
+
+```bash
+cd source && go run main.go
+```
+
+```shell
+2020/12/31 19:45:40 ✅ Connected to yomo-zipper localhost:9000
+2020/12/31 19:45:40 ✅ Emit 143.58589 to yomo-zipper
+2020/12/31 19:45:40 ✅ Emit 101.46548 to yomo-zipper
+```
+
+This will start a [YoMo-Source](https://yomo.run/source), demonstrate a random float every 100ms to [YoMo-Zipper](https://yomo.run/zipper).
 
 ## How yomo-sink-faunadb work
 
