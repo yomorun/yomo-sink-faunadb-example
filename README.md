@@ -1,6 +1,6 @@
 # yomo-sink-faunadb
 
-The example shows how to implement a [yomo-sink](https://yomo.run/sink) to bulk write data in FaunaDB.
+FaunaDB 🙌 YoMo. This example demonstrates how to implement a [yomo-sink](https://yomo.run/sink) to bulk write data in FaunaDB.
 
 ## Using Fauna
 
@@ -43,7 +43,9 @@ sinks:
 
 Start this zipper will listen on `9000` port, send data streams directly to `4141`:
 
-```shell
+```bash
+cd ./zipper && yomo wf run
+
 2020/12/31 19:45:15 Found 0 flows in zipper config
 2020/12/31 19:45:15 Found 1 sinks in zipper config
 2020/12/31 19:45:15 Sink 1: FaunaDB on localhost:4141
@@ -52,17 +54,11 @@ Start this zipper will listen on `9000` port, send data streams directly to `414
 2020/12/31 19:45:32 ✅ Connect to FaunaDB (localhost:4141) successfully.
 ```
 
-```bash
-cd ./zipper && yomo wf run
-```
-
 ### Emulate a data source for testing
 
 ```bash
 cd source && go run main.go
-```
 
-```shell
 2020/12/31 19:45:40 ✅ Connected to yomo-zipper localhost:9000
 2020/12/31 19:45:40 ✅ Emit 143.58589 to yomo-zipper
 2020/12/31 19:45:40 ✅ Emit 101.46548 to yomo-zipper
