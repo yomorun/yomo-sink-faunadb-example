@@ -17,7 +17,7 @@ import (
 
 const batchSize = 1000
 
-var bufferTime = rxgo.WithDuration(3 * time.Second)
+var bufferTime = rxgo.WithDuration(30 * time.Second)
 
 var (
 	client         *f.FaunaClient
