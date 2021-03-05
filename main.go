@@ -103,7 +103,7 @@ func bulkInsert(observer rx.RxStream) error {
 				return err
 			}
 
-			log.Printf("Insert %d noise data into InfluxDB...", len(items))
+			log.Printf("Insert %d noise data into FaunaDB...", len(items))
 		}
 	}
 
